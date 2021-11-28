@@ -28,7 +28,6 @@ def input_number(message):
             return float(input(message))
         except ValueError:
             print('The input is not a number!\n')
-            continue
         except KeyboardInterrupt:
             sys.exit('')
 

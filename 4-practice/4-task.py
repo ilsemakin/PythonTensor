@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import sys
-
 MAX_WEIGHT = 100
 
 reference = {
@@ -89,7 +87,7 @@ def input_item(message):
         print('Invalid number of parameters!')
 
 def finish():
-    sys.exit()
+    exit()
 
 commands = {
     0: print_help,
@@ -99,4 +97,5 @@ commands = {
     100: finish
 }
 
-main()
+if __name__ == '__main__':
+    main()

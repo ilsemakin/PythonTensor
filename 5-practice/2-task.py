@@ -11,11 +11,14 @@ def all_sum(*numbers):
 
 def input_list(message):
     while True:
-        try:
-            numbers = input(message)
-            if len(numbers) == 0: return numbers
-            else: numbers = numbers.split(' ') 
+        numbers = input(message)
+        
+        if len(numbers) == 0:
+            return numbers
+        else:
+            numbers = numbers.split(' ') 
 
+        try:
             for index, number in enumerate(numbers):
                 numbers[index] = float(number)
         except ValueError:
@@ -23,4 +26,5 @@ def input_list(message):
         else:
             return numbers
 
-main()
+if __name__ == '__main__':
+    main()

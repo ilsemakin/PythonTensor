@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-import random
+from random import randint
 
-set_1 = set(random.randint(-50, 50) for _ in range(20))
-set_2 = set(random.randint(-50, 50) for _ in range(20))
+set_1 = set(randint(-50, 50) for _ in range(20))
+set_2 = set(randint(-50, 50) for _ in range(20))
 
 print(f'set1 = {set_1}\nset2 = {set_2}\n')
 

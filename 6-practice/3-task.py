@@ -13,10 +13,12 @@ def main():
 def read_file(name):
     try:
         with open(name, 'r', encoding='utf-8') as file:
-            return file.read()
+            data = file.read()
     except FileNotFoundError:
         print('File not found!')
         return None
+    else:
+        return data
 
 def write_file(name, data):
     with open(name, 'w') as file:
@@ -25,7 +27,8 @@ def write_file(name, data):
 def xor_shift(key, data):
     result = ''
     for data_symbol, key_symbol in zip(data, cycle(key)):
-        result += chr(ord(data_symbol)^ord(key_symbol))
+        result += chr(ord(data_symbol) ^ ord(key_symbol))
     return result
 
-main()
+if __name__ == '__main__':
+    main()

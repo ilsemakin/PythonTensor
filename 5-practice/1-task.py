@@ -20,4 +20,5 @@ def input_password(message):
     else:
         return False
 
-main()
+if __name__ == '__main__':
+    main()

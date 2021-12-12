@@ -2,20 +2,27 @@
 from functools import lru_cache
 
 def main():
-    print(f'Fibonacci number = {fibonacci(input_number("Enter the number: "))}')
+    number = input_number('Enter the number: ')
+    print(f'Fibonacci number = {fibonacci(number)}')
 
 @lru_cache()
 def fibonacci(number):
     if number in (1, 2):
         return 1
     else:
-        return fibonacci(number-1) + fibonacci(number-2) 
+        return fibonacci(number-1) + fibonacci(number-2)
+
 
 def input_number(mesage):
     while True:
         try:
-            return float(input(mesage))
+            number = float(input(mesage))
+            if number <= 0:
+                raise ValueError
         except ValueError:
-            print('Input not a number!\n')
+            print('Input is not a positive number!\n')
+        else:
+            return number
 
-main()
+if __name__ == '__main__':
+    main()

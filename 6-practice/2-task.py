@@ -14,18 +14,22 @@ def calc_molecules(data):
 def read_file(name):
     try:
         with open(name, 'r', encoding='utf-8') as file:
-            return check_data(file.readline())
+            data = check_data(file.readline())
     except FileNotFoundError:
         print('File not found!')
         return None
+    else:
+        return data
 
 def write_file(name, data):
     with open(name, 'w') as file:
         file.write(str(data))
 
 def check_data(data):
+    data = [_data for _data in data.split(' ') if _data]
+
     try:
-        data = [int(data) for data in [data for data in data.split(' ') if data]]
+        data = [int(_data) for _data in data]
     except ValueError:
         print('A non-natural number was read!')
         return None
@@ -36,4 +40,5 @@ def check_data(data):
             print('There is not enough data in the file!')
             return None
 
-main()
+if __name__ == '__main__':
+    main()

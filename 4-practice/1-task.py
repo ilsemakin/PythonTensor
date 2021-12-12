@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 
 def main():
     print(buble_sort(input_list('Enter a list of numbers: ')))
@@ -23,5 +22,6 @@ def input_list(message):
             print('Input not a number!\n')
         else:
             return numbers
-        
-main()
+
+if __name__ == '__main__':
+    main()

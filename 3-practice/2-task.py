@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 
 up = ['up', 'вверх']
 down = ['down', 'вниз']
@@ -29,20 +28,21 @@ def input_command(message):
     movements = up + down + right + left
 
     while True:
-        try:
-            command = input(message).split(' ')
-            movement = command[0]
+        command = input(message).split(' ')
+        movement = command[0]
+        
+        if movement in stop:
+            exit()
+        elif movement not in movements or len(command) != 2:
+            print('Command not defined!\n')
+            continue
 
-            if movement in stop: sys.exit()
-            
-            if movement not in movements or len(command) != 2:
-                print('Command not defined!\n')
-            else: 
-                command[1] = float(command[1])
-                return command
+        try:
+            command[1] = float(command[1])
         except ValueError:
             print('The input is not a number!\n')
-        except KeyboardInterrupt:
-            sys.exit('')
-     
-main()
+        else:
+            return command
+
+if __name__ == '__main__':
+    main()

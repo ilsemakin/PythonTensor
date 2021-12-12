@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 def main():
-    print(f'Sum = {all_sum(*input_list("Enter a list of numbers: "))}')
+    numbers = input_list("Enter a list of numbers: ")
+    print(f'Sum = {all_sum(*numbers)}')
 
 def all_sum(*numbers):
     result = 0

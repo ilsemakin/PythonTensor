@@ -2,6 +2,7 @@
 from math import sqrt
 
 def main():
+    """Displays the result of solving a quadratic equation."""
     a = input_number(f'Enter coefficient A: ')
     b = input_number(f'Enter coefficient B: ')
     c = input_number(f'Enter coefficient C: ')
@@ -14,6 +15,26 @@ def main():
         print('x1 = {:.2f} x2 = {:.2f}'.format(*answer))
 
 def solve_square_equation(a, b, c):
+    """Returns the roots of a quadratic equation.
+
+    Parameters
+    ----------
+    a : int
+        Coefficient at x x**2 
+    b : int
+        Coefficient at x x
+    c : int
+        Free term
+
+    Returns
+    -------
+    list
+        a list of float roots
+    list
+        a list of comlex roots
+    list
+        empty list if there are no roots
+    """
     solutions = []
 
     d = b**2 - 4*a*c
@@ -30,6 +51,18 @@ def solve_square_equation(a, b, c):
     return solutions
 
 def input_number(message):
+    """Returns a number.
+
+    Parameters
+    ----------
+    message : str
+        A message to the user when entering data
+    
+    Returns
+    -------
+    float
+        converted number from string
+    """
     while True:
         try:
             number = float(input(message))

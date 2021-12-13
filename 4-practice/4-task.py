@@ -12,29 +12,40 @@ reference = {
 inventory = {}
 
 def main():
+    """Prints help and processes user commands."""
     print_help()
     while True:
         commands[input_comand('Enter the command number: ')]()
         print('\n')
 
 def input_comand(message):
+    """Returns the correct command number.
+
+    Parameters
+    ----------
+    message : str
+        A message to the user when entering data
+
+    Returns
+    -------
+    int
+        command number
+    """
     while True:
+        command_key = input(message)
         try:
-            command_key = input(message)
-            
-            if command_key.isdigit():
-                command_key = int(command_key)
-                commands[command_key]
-            else:
+            if command_key not in ('0', '1', '2', '3', '100'):
                 raise KeyError
         except KeyError:
             print('Command not found!\n')
         else:
-            return command_key
+            return int(command_key)
 
 def add_item():
+    """Adds an inventory item to the list."""
     item = input_item('Enter item: ')
-    if item != None:
+
+    if item:
         if check_weight(item[1]):
             inventory[item[0]] = item[1]
             print(f'Item <{item[0]}> added to inventory!')
@@ -42,6 +53,20 @@ def add_item():
             print('Inventory full!')
     
 def check_weight(item_weight):
+    """Checks the weight of the inventory.
+    
+    Parameters
+    ----------
+    item_weight : int
+        Weight of the item being checked
+
+    Returns
+    -------
+    True
+        true if the item can be put into inventory
+    False
+        false if inventory is full
+    """
     checksum = item_weight
     for key in inventory:
         checksum += inventory[key]
@@ -52,6 +77,7 @@ def check_weight(item_weight):
         return False
 
 def remove_item():
+    """Removes an item from inventory."""
     if len(inventory) != 0:
         inventory_key = input('Enter the item to delete from inventory: ')
         try:
@@ -64,6 +90,7 @@ def remove_item():
         print('Inventory is empty!')
     
 def print_items():
+    """Prints all inventory items."""
     if len(inventory) != 0:
         for key, value in inventory.items():
             print(f'{key} - {value}')
@@ -71,22 +98,42 @@ def print_items():
         print('Inventory is empty!')
 
 def print_help():
+    """Prints help for the user."""
     for command_num, description in reference.items():
         print(f'{command_num} -> {description}')        
 
 def input_item(message):
+    """Returns the name of the item with the correct weight.
+
+    Parameters
+    ----------
+    message : str
+        A message to the user when entering data
+
+    Returns
+    -------
+    list
+        a list with item and weight in the format [item name, weight]
+    list
+        empty list if data is invalid
+    """
     item = input(message).split(' ')
     if len(item) == 2:
         try:
             item[1] = float(item[1])
+            if item[1] <= 0:
+                raise ValueError
         except ValueError:
-            print('The input is not a number!')
+            print('The input is not a positive number!')
         else:
             return item
     else:
         print('Invalid number of parameters!')
 
+    return []
+
 def finish():
+    """Ends the program."""
     exit()
 
 commands = {

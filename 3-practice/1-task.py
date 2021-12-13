@@ -6,6 +6,7 @@ right = ['right', 'вправо']
 left = ['left', 'влево']
 
 def main():
+    """Modifies and prints coordinate parameters."""
     x = y = 0
 
     command = input_command('Enter the command: ')
@@ -23,6 +24,18 @@ def main():
     print(f'({_x}; {_y}) -> ({x}; {y})\n')
 
 def input_command(message):
+    """Returns the correct command.
+    
+    Parameters
+    ----------
+    message : str
+        A message to the user when entering data
+
+    Returns
+    -------
+    list
+        a list in the format [command, number]
+    """
     movements = up + down + right + left
     
     while True:

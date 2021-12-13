@@ -7,10 +7,13 @@ left = ['left', 'влево']
 stop = ['stop', 'стоп']
 
 def main():
+    """Changes and prints coordinate parameters
+    in a loop until the user interrupts it."""
     x = y = 0
 
     while True:
         command = input_command('Enter the command: ')
+        if command in stop: break
 
         movement = command[0]
         step = command[1]
@@ -25,6 +28,20 @@ def main():
         print(f'({_x}; {_y}) -> ({x}; {y})\n')
 
 def input_command(message):
+    """Returns the correct command.
+    
+    Parameters
+    ----------
+    message : str
+        A message to the user when entering data
+
+    Returns
+    -------
+    list
+        a list in the format [command, number]
+    str
+        a string with stop command
+    """
     movements = up + down + right + left
 
     while True:
@@ -32,7 +49,7 @@ def input_command(message):
         movement = command[0]
         
         if movement in stop:
-            exit()
+            return movement
         elif movement not in movements or len(command) != 2:
             print('Command not defined!\n')
             continue

@@ -8,7 +8,7 @@ def main():
 def all_sum(*numbers):
     """Returns the sum of all arguments.
     
-    ParametersA message to the user when entering data
+    Parameters
     ----------
     numbers : tuple
         Dynamic number of arguments
